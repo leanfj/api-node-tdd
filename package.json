@@ -5,7 +5,8 @@
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "test:integration": "NODE_ENV=test mocha --opts test/integration/mocha.opts test/integration/**/*_spec.js",
+        "test:integration": "NODE_ENV=test mocha --config test/integration/.mocharc.json test/integration/**/*_spec.js",
+        "test:unit": "NODE_ENV=test mocha --config test/unit/.mocharc.json test/unit/**/*_spec.js",
         "build": "babel src --out-dir dist",
         "start": "npm run build && node dist/server.js",
         "start:dev": "babel-node src/server.js"
