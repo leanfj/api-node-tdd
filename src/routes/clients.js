@@ -1,16 +1,12 @@
 import express from "express";
+import ClientsController from "../controllers/clients";
 
 const router = express.Router();
 
+const clientsController = new ClientsController();
+
 router.get("/", (req, res) => {
-    return res.send([
-        {
-            name: "Default Client Name",
-            origin: "Elo7",
-            birthDate: "22/03/1986",
-            cellPhone: "(21)96883-6199"
-        }
-    ]);
+    return clientsController.get(req, res);
 });
 
 export default router;
