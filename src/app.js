@@ -1,9 +1,22 @@
 import express from "express";
 import routes from "./routes";
 
+import database from "./config/databse";
+
 const app = express();
-app.use(express.json());
 
-app.use("/", routes);
+const configureExpress = () => {
+    app.use(express.json());
+    app.use("/", routes);
+    app.database = database
 
-export default app;
+    return app
+}
+
+export default async() => {
+    const app = configureExpress()
+
+    await app.database.connect()
+
+    return app
+};

@@ -6,7 +6,7 @@ describe("Routes: Clients", () => {
         cellPhone: "(21)96883-6199"
     };
 
-    describe("GET /clients", () => {
+    describe("GET /clients", (done) => {
         it("should return a list of products", done => {
             request.get("/clients").end((err, res) => {
                 expect(res.body[0]).to.eql(defaultClients);
